@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CourseView</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <h1><strong>Survey Questions</strong></h1>
+    <hr>
+    <h3><strong>About you</strong></h3>
+    <h4> Name</h4>
+    <input type="text" id="name" required>
+    <h4>Personal Image-Link</h4>
+    <input type="text" id="photo" required>
+    <hr>
+
+    <h3><strong>Question 1</strong></h3>
+    <h4>Is it easy to change your mind </h4>
+    <div class="input-field col s12">
+      <select id="q1">
+    		<option value="" disabled selected>Choose your option</option>
+    		<option value="1">1 (Strongly Disagree)</option>
+    		<option value="2">2</option>
+    		<option value="3">3</option>
+    		<option value="4">4</option>
+    		<option value="5">5 (Strongly Agree)</option>
+    	</select>
+    </div>
+<hr>
+    <h3><strong>Question 2</strong></h3>
+
+    <h4>Do you belive in adapting from others.</h4>
+    <div class="input-field col s12">
+      <select id="q2">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+    </div>
+<hr>
+    <h3><strong>Question 3</strong></h3>
+    <h4>Do you belive in juding people from the outside</h4>
+    <div class="input-field col s12">
+      <select id="q3">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+    </div>
+<hr>
+    <h3><strong>Question 4</strong></h3>
+    <h4>How easy to affect your opinion.</h4>
+    <div class="input-field col s12">
+      <select id="q4">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+    </div>
+<hr>
+    <h3><strong>Question 5</strong></h3>
+    <h4>People can rarely upset you.</h4>
+    <div class="input-field col s12">
+      <select id="q5">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+    </div>
+<hr>
+<h3><strong>Question 6</strong></h3>
+    <h4>How do you react when your'e being judged</h4>
+    <div class="input-field col s12">
+      <select id="q6">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+    </div>
+<hr>
+<h3><strong>Question 7</strong></h3>
+    <h4>Does time reflect friendship</h4>
+    <div class="input-field col s12">
+      <select id="q7">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+    </div>
+<hr>
+<h3><strong>Question 8</strong></h3>
+    <h4>Do you consider yourself a righteous person.</h4>
+    <div class="input-field col s12">
+      <select id="q8">
+        <option value="" disabled selected>Choose your option</option>
+        <option value="1">1 (Strongly Disagree)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5 (Strongly Agree)</option>
+      </select>
+    </div>
+<hr>
+
+<button type="button" class="btn btn-primary btn-lg btn-block submit"><span class="glyphicon glyphicon-ok
+"></span> Submit</button>
+</div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+    // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
+    // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
+    // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
+    // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
+
+    $(".submit").on("click", function(event) {
+      event.preventDefault();
+      // Here we grab the form elements
+      var newFriend = {
+        name: $("#name").val().trim(),
+        photolink: $("#photo").val().trim(),
+        q1: $("#q1").val().trim(),
+        q2: $("#q2").val().trim(),
+        q3: $("#q3").val().trim(),
+        q4: $("#q4").val().trim(),
+        q5: $("#q5").val().trim(),
+        q6: $("#q5").val().trim(),
+        q7: $("#q5").val().trim(),
+        q8: $("#q5").val().trim()
+      };
+      console.log(newFriend);
+
+      // This line is the magic. It"s very similar to the standard ajax function we used.
+      // Essentially we give it a URL, we give it the object we want to send, then we have a "callback".
+      // The callback is the response of the server. In our case, we set up code in api-routes that "returns" true or false
+      // depending on if a tables is available or not.
+      $.post("/api/friends", friendsArray,
+        function(data) {
+
+          // If a table is available... tell user they are booked.
+          if (!data) {
+            alert("Please input all the information");
+          }
+
+          // If a table is available... tell user they on the waiting list.
+          else {
+            alert("Sorry you are on the wait list");
+          }
+
+          // Clear the form when submitting
+          $("#name").val("");
+          $("#photo").val("");
+
+
+        });
+
+    });
+
+
+</script>
